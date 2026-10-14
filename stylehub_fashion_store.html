@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Sets character encoding to UTF-8 to support all standard text characters -->
+  <meta charset="UTF-8">
+  <!-- Ensures proper responsive scaling and layout on mobile devices -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>StyleHub - Fashion Store</title>
+  
+  <style>
+    /* Reset: ensures padding and borders are included in element's total width and height */
+    * { box-sizing: border-box; }
+
+    /* Global page styling: font family, soft background color, and dark gray text */
+    body { 
+      margin: 0; 
+      font-family: Arial, sans-serif; 
+      background: #f7f4f2; 
+      color: #222; 
+    }
+
+    /* Header styling: dark background, padding, flexbox layout to space out title and cart badge */
+    header { 
+      background: #222; 
+      color: white; 
+      padding: 18px 7%; 
+      display: flex; 
+      justify-content: space-between; 
+      align-items: center; 
+    }
+
+    /* Remove default margins from the header title */
+    header h1 { margin: 0; font-size: 24px; }
+
+    /* Cart badge styling: peach/coral accent background with rounded pill shape */
+    header span { 
+      background: #e8b4a0; 
+      color: #222; 
+      padding: 8px 12px; 
+      border-radius: 20px; 
+    }
+
+    /* Hero banner styling: centered heading and subheading with warm neutral background */
+    .hero { 
+      text-align: center; 
+      padding: 35px 15px; 
+      background: #ead5cb; 
+    }
+    .hero h2 { margin: 0 0 8px; }
+
+    /* Products grid container: centers product cards and wraps them cleanly on smaller screens */
+    .products { 
+      display: flex; 
+      flex-wrap: wrap; 
+      justify-content: center; 
+      gap: 20px; 
+      padding: 25px 15px; 
+    }
+
+    /* Individual product card styling: white box, fixed width, rounded corners, and soft shadow */
+    .card { 
+      background: white; 
+      width: 220px; 
+      padding: 15px; 
+      text-align: center; 
+      border-radius: 10px; 
+      box-shadow: 0 2px 8px #00000012; 
+    }
+
+    /* Product emoji photo placeholder styling: fixed height, centered content, light background */
+    .photo { 
+      height: 150px; 
+      display: grid; 
+      place-items: center; 
+      background: #f0e8e3; 
+      border-radius: 8px; 
+      font-size: 65px; 
+    }
+
+    /* Product card heading spacing */
+    .card h3 { margin: 12px 0 6px; }
+
+    /* Product price styling: bold text */
+    .price { font-weight: bold; margin: 8px; }
+
+    /* Button styling: dark background, white text, rounded corners, pointer cursor */
+    button { 
+      background: #222; 
+      color: white; 
+      border: 0; 
+      padding: 10px 14px; 
+      border-radius: 5px; 
+      cursor: pointer; 
+    }
+
+    /* Button hover state: changes color to a warm terracotta/brown on mouseover */
+    button:hover { background: #a85d47; }
+
+    /* Contact Section container styling */
+    .contact-section {
+      background: #fff;
+      padding: 40px 20px;
+      margin: 30px auto;
+      max-width: 600px;
+      border-radius: 10px;
+      box-shadow: 0 2px 8px #0000000d;
+      text-align: center;
+    }
+    .contact-section h2 { margin-top: 0; margin-bottom: 8px; }
+    .contact-section p { color: #666; margin-bottom: 20px; }
+
+    /* Contact form layout */
+    .contact-form {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+      text-align: left;
+    }
+
+    /* Styling for text inputs and textarea fields */
+    .contact-form input, 
+    .contact-form textarea {
+      width: 100%;
+      padding: 12px;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+      font-family: inherit;
+      font-size: 14px;
+    }
+
+    /* Focus state for inputs: highlights border with button accent color */
+    .contact-form input:focus, 
+    .contact-form textarea:focus {
+      outline: none;
+      border-color: #a85d47;
+    }
+
+    /* Footer styling: dark background and centered text */
+    footer { 
+      text-align: center; 
+      padding: 18px; 
+      background: #222; 
+      color: white; 
+    }
+
+    /* Responsive media query: adjusts header and card layout on screens smaller than 500px */
+    @media (max-width: 500px) { 
+      header { padding: 15px; } 
+      .card { width: 100%; max-width: 300px; } 
+      .contact-section { margin: 15px; padding: 25px 15px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header Section: Contains brand logo and interactive cart counter badge -->
+  <header>
+    <h1>StyleHub</h1>
+    <span>Cart: <b id="cart-count">0</b></span>
+  </header>
+
+  <!-- Hero Section: Welcoming banner introducing the store -->
+  <section class="hero">
+    <h2>Everyday Fashion</h2>
+    <p>Simple styles. Great prices.</p>
+  </section>
+
+  <!-- Main Products Section: Displays a grid of product cards -->
+  <main class="products">
+    <!-- Product 1: Classic T-Shirt -->
+    <div class="card">
+      <div class="photo"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTPEoTgFeLxnJf2q7MIbsZePntl_2RaR2E8UFZ3T61FDQ-QFROGpuwVs6Y&s=10" alt="Classic T-Shirt" style="width: 100%; height: 80%; object-fit: cover; border-radius: 8px;"></div>
+      <h3 style="color: rgb(111, 100, 100);">Classic T-Shirt</h3>
+      <p class="price" style="color: white;">₹499</p>
+      <!-- Calls JavaScript function addToCart() when clicked -->
+      <button onclick="addToCart()">Add to Cart</button>
+    </div>
+
+    <!-- Product 2: Blue Jeans -->
+    <div class="card">
+      <div class="photo"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQW-qFrTZ0ye2FRPCiI6Y4XO5A7NoVhAJJuwvCH6Co9yecWzTcmkYRv7rQF&s=10" alt="Classic T-Shirt" style="width: 100%; height: 100%; object-fit: cover; border-radius: 8px;"></div>
+      <h3>Blue Jeans</h3>
+      <p class="price">₹999</p>
+      <!-- Calls JavaScript function addToCart() when clicked -->
+      <button onclick="addToCart()">Add to Cart</button>
+    </div>
+
+    <!-- Product 3: Casual Jacket -->
+    <div class="card">
+      <div class="photo"><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRjN5lY73NNMMmfnhy8C9LZ6Lm9AOcJgDBMXkqD42rP6BVVNjGlQ1eZNy4&s=10" alt="Casual Jacket" style="width: 90%; height: 100%; object-fit: cover; border-radius: 8px;">
+      </div>
+      <h3>Casual Jacket</h3>
+      <p class="price">₹1,499</p>
+      <!-- Calls JavaScript function addToCart() when clicked -->
+      <button onclick="addToCart()">Add to Cart</button>
+    </div>
+  </main>
+
+  <!-- Contact Us & Comment Box Section -->
+  <section class="contact-section">
+    <h2>Contact Us & Feedback</h2>
+    <p>Have a question or want to leave a comment? Let us know below!</p>
+    
+    <!-- Contact form preventing page reload on submit -->
+    <form class="contact-form" onsubmit="submitForm(event)">
+      <input type="text" id="contact-name" placeholder="Your Name" required>
+      <input type="email" id="contact-email" placeholder="Your Email" required>
+      <textarea id="contact-message" rows="4" placeholder="Your Comment or Message..." required></textarea>
+      <button type="submit">Send Message</button>
+    </form>
+  </section>
+
+  <!-- Footer Section -->
+  <footer>© 2026 StyleHub Fashion Store</footer>
+
+  <!-- JavaScript Functionality Section -->
+  <script>
+    // Variable to track the total number of items added to the cart
+    let cartCount = 0;
+
+    /**
+     * Function: addToCart
+     * Functionality: Increments the cartCount by 1 and updates the UI badge text.
+     */
+    function addToCart() {
+      cartCount++; // Increase count by 1
+      // Find the element with id 'cart-count' and update its text content with the new number
+      document.getElementById("cart-count").textContent = cartCount;
+    }
+
+    /**
+     * Function: submitForm
+     * Functionality: Handles feedback form submission and displays a thank you alert.
+     */
+    function submitForm(event) {
+      event.preventDefault(); // Prevents the page from refreshing on form submission
+      
+      // Grab user values (can be used for processing or backend transmission)
+      const name = document.getElementById("contact-name").value;
+      
+      // Show confirmation message to the user
+      alert("Thank you, " + name + "! Your message has been sent successfully.");
+      
+      // Reset/clear the form fields after successful submission
+      event.target.reset();
+    }
+  </script>
+</body>
+</html>
